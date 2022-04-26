@@ -1,10 +1,8 @@
-//paste it
 const app = require("./app");
 const http = require("http");
 
-
 //this function is to make sure that when we receive port from environment variable it is a valid number
-const normalizePort = val => {
+const normalizePort = (val) => {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -20,9 +18,8 @@ const normalizePort = val => {
   return false;
 };
 
-
-// this error function is to check what type of error it is & log it, exit from node server 
-const onError = error => {
+// this error function is to check what type of error it is & log it, exit from node server
+const onError = (error) => {
   if (error.syscall !== "listen") {
     throw error;
   }
@@ -41,11 +38,12 @@ const onError = error => {
   }
 };
 
-//This function is just showing what portour server is listening to
+//This function is just showing what port our server is listening to
 const onListening = () => {
   const addr = server.address();
   const bind = typeof port === "string" ? "pipe " + port : "port " + port;
   console.log("Listening on " + bind);
+  // debug("Listening on " + bind);
 };
 
 const port = normalizePort(process.env.PORT || "3000");
